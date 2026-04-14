@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Student Registration</h3>
+<form method="post" action="{{url_for('register_student')}}">
+    <input class="form-control mb-2" name="name" placeholder="Enter your name" required>
+    <input class="form-control mb-2" type="email" name="email" placeholder="Enter your Email" required>
+    <input class="form-control mb-2" type="password" name="password" placeholder="Enter your password" required>
+    <input class="form-control mb-2" name="branch" placeholder="Enter your branch" required>
+    <input class="form-control mb-2" name="cgpa" placeholder="Enter your cgpa" required>
+
+    <button class="btn btn-success">Register</button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Applicants</h3>
+
+{% if apps and apps|length > 0 %}
+
+<table class="table table-striped">
+
+    <tr>
+        <th>Name</th>
+        <th>Branch</th>
+        <th>CGPA</th>
+        <th>Status</th>
+        <th>Resume</th>
+        <th>Action</th>
+
+    </tr>
+
+    {% for a in apps %}
+    <tr>
+        <td>{{ a.student.name }}</td>
+        <td>{{ a.student.branch }}</td>
+        <td>{{ a.student.cgpa }}</td>
+        <td>{{ a.status }}</td>
+        <td>
+            {% if a.student.resume %}
+            <a href="{{ url_for('static', filename='resumes/' + a.student.resume) }}" target="_blank">
+                View Resume
+            </a>
+            {% else %}
+            Not Uploaded
+            {% endif %}
+        </td>
+        <td>
+
+            <a href="/company/update-status/{{ a.id }}/Selected" class="btn btn-sm btn-success">
+                Select
+            </a>
+
+            <a href="/company/update-status/{{ a.id }}/Rejected" class="btn btn-sm btn-danger">
+                Reject
+            </a>
+
+
+        </td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% else %}
+
+<p>No students have applied yet.</p>
+
+{% endif %}
+
+{% endblock %}

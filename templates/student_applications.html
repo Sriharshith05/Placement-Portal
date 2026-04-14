@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h3 class="mb-3">My Application</h3>
+
+{% if applications and applications|length > 0 %}
+
+<table class="table table-hover align-middle shadow-sm">
+    <thead>
+        <tr>
+            <th>Drive</th>
+            <th>Company</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for app in applications %}
+        <tr>
+            <td>{{ app.drive.title }}</td>
+            <td>{{ app.drive.company.name }}</td>
+            <td>
+                {% if app.status == "Selected" %}
+                <span class="badge bg-success">Selected</span>
+                {% elif app.status == "Rejected" %}
+                <span class="badge bg-danger">Rejected</span>
+                {% else %}
+                <span class="badge bg-warning text-dark">Pending</span>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+
+    {% else %}
+
+    <p class="text-danger">You have not applied for any drives yet.</p>
+
+    {% endif %}
+
+    {% endblock %}

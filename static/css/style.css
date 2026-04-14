@@ -1,0 +1,30 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h2, h3 {
+    font-weight: 600;
+}
+
+.card {
+    border-radius: 8px;
+}
+
+.table th {
+    background-color: #f8f9fa;
+}
+
+.btn {
+    border-radius: 6px;
+}
+.card {
+    border-radius: 8px;
+}
+
+.table th {
+    background-color: #f8f9fa;
+}
+
+.btn {
+    border-radius: 6px;
+}

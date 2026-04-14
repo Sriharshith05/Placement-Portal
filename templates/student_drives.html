@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h3 class="mb-3">Available Drives</h3>
+
+{% if drives and drives|length > 0 %}
+
+<table class="table table-hover align-middle shadow-sm">
+
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Deadline</th>
+        <th>Min CGPA</th>
+        <th>Action</th>
+    </tr>
+
+    {% for d in drives %}
+
+    <tr>
+        <td>{{ d.title }}</td>
+        <td>{{ d.description }}</td>
+        <td>{{ d.deadline }}</td>
+        <td>{{ d.min_cgpa }}</td>
+
+        <td>
+
+            {% if d.id in applied_drive_ids %}
+
+            <button class="btn btn-sm btn-secondary" disabled>
+                Applied
+            </button>
+
+            {% else %}
+
+            <a href="/student/apply/{{ d.id }}" class="btn btn-sm btn-success">
+                Apply
+            </a>
+
+            {% endif %}
+
+        </td>
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% else %}
+
+<p class="text-danger">No placement drives available.</p>
+
+{% endif %}
+
+{% endblock %}

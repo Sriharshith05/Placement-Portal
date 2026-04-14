@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Search Company</h3>
+
+<form method="POST">
+
+    <input type="text" name="keyword" placeholder="Enter company name" class="form-control" required>
+
+    <br>
+
+    <button class="btn btn-primary">Search</button>
+
+</form>
+
+<hr>
+
+<table class="table">
+
+    <tr>
+        <th>Name</th>
+        <th>Contact</th>
+        <th>Status</th>
+    </tr>
+
+    {% for c in companies %}
+
+    <tr>
+        <td>{{ c.name }}</td>
+        <td>{{ c.contact }}</td>
+
+        <td>
+            {% if c.approved %}
+            Approved
+            {% else %}
+            Pending
+            {% endif %}
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% endblock %}

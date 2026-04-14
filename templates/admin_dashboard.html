@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="mb-4">Admin Dashboard</h2>
+
+
+
+<div class="mb-4">
+
+    <a href="/admin/users" class="btn btn-primary btn-sm me-2">
+        View Users
+    </a>
+
+    <a href="/admin/applications" class="btn btn-info btn-sm me-2">
+        View Applications
+    </a>
+
+    <a href="/admin/search-student" class="btn btn-warning btn-sm me-2">
+        Search Students
+    </a>
+    <a href="/admin/search-company" class="btn btn-secondary btn-sm me-2">
+        Search Companies
+    </a>
+
+</div>
+
+<hr>
+
+
+
+<div class="row text-center mt-4">
+
+    <div class="col-md-3 mb-3">
+        <div class="card p-3 shadow-sm">
+            <h5>Students</h5>
+            <h4>{{ students }}</h4>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+        <div class="card p-3 shadow-sm">
+            <h5>Companies</h5>
+            <h4>{{ companies }}</h4>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+        <div class="card p-3 shadow-sm">
+            <h5>Drives</h5>
+            <h4>{{ drives }}</h4>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+        <div class="card p-3 shadow-sm">
+            <h5>Applications</h5>
+            <h4>{{ apps }}</h4>
+        </div>
+    </div>
+
+</div>
+
+<hr>
+
+
+
+<h4 class="mt-4">Pending Company Approvals</h4>
+
+<table class="table table-hover align-middle shadow-sm">
+
+    <tr>
+        <th>Name</th>
+        <th>Contact</th>
+        <th>Action</th>
+    </tr>
+
+    {% for c in pending_companies %}
+
+    <tr>
+        <td>{{ c.name }}</td>
+        <td>{{ c.contact }}</td>
+
+        <td>
+            <a href="/admin/approve-company/{{ c.id }}" class="btn btn-success btn-sm">
+
+                Approve
+            </a>
+
+            <a href="/admin/reject-company/{{ c.id }}" class="btn btn-danger btn-sm">
+
+                Reject
+            </a>
+        </td>
+
+    </tr>
+
+    {% else %}
+
+    <tr>
+        <td colspan="3" class="text-center text-muted">
+            No pending companies
+        </td>
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+<hr>
+
+
+
+<h4 class="mt-4">Pending Drive Approvals</h4>
+
+<table class="table table-hover align-middle shadow-sm">
+
+    <tr>
+        <th>Title</th>
+        <th>Deadline</th>
+        <th>Action</th>
+    </tr>
+
+    {% for d in pending_drives %}
+
+    <tr>
+        <td>{{ d.title }}</td>
+        <td>{{ d.deadline }}</td>
+
+        <td>
+            <a href="/admin/approve-drive/{{ d.id }}" class="btn btn-success btn-sm">
+
+                Approve
+            </a>
+
+            <a href="/admin/reject-drive/{{ d.id }}" class="btn btn-danger btn-sm">
+
+                Reject
+            </a>
+        </td>
+
+    </tr>
+
+    {% else %}
+
+    <tr>
+        <td colspan="3" class="text-center text-muted">
+            No pending drives
+        </td>
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% endblock %}

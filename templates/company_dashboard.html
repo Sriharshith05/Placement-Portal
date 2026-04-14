@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card mt-4 border-success">
+    <div class="card-body text-center">
+        <h2 class="card-title text-success">Company Dashboard</h2>
+        <p class="card-text">
+            Welcome! You are successfully logged in as a company partner.
+        </p>
+    </div>
+</div>
+
+<div class="row mt-4">
+
+    <div class="col-md-6 mb-3">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Post a New Drive</h5>
+                <p class="card-text">
+                    Create a new placement drive to hire students.
+                </p>
+
+                <a href="{{ url_for('create_drive') }}" class="btn btn-success">
+                    Create Drive
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-6 mb-3">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Manage Applications</h5>
+                <p class="card-text">
+                    Review student applications for your drives.
+                </p>
+
+                <a href="{{ url_for('company_drives') }}" class="btn btn-primary">
+                    View My Drives
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

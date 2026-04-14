@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Company Registration</h3>
+<form method="post" action="{{url_for('register_company')}}">
+    <input class="form-control mb-2" name="name" placeholder="Enter your name" required>
+    <input class="form-control mb-2" type="email" name="email" placeholder="Enter your Email" required>
+    <input class="form-control mb-2" type="password" name="password" placeholder="Enter your password" required>
+    <input class="form-control mb-2" name="contact" placeholder="Enter your Contact Number" required>
+
+    <button class="btn btn-success">Register</button>
+</form>
+
+{% endblock %}

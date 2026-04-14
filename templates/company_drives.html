@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Your Drives</h3>
+
+{% if drives and drives|length > 0 %}
+
+<table class="table table-hover align-middle shadow-sm">
+
+    <tr>
+        <th>Title</th>
+        <th>Deadline</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+
+    {% for d in drives %}
+    <tr>
+
+        <td>{{ d.title }}</td>
+        <td>{{ d.deadline }}</td>
+
+        <!-- ✅ Status Column -->
+        <td>
+            {% if d.closed %}
+            <span class="badge bg-secondary">Closed</span>
+            {% else %}
+            <span class="badge bg-success">Open</span>
+            {% endif %}
+        </td>
+
+        <td>
+
+            <!-- View Applicants -->
+            <a href="{{ url_for('company_applicants', drive_id=d.id) }}" class="btn btn-primary btn-sm mb-1">
+                View Applicants
+            </a>
+
+            <!-- Close Drive Button-->
+            {% if not d.closed %}
+            <a href="/company/close-drive/{{ d.id }}" class="btn btn-danger btn-sm mb-1"
+                onclick="return confirm('Are you sure you want to close this drive?');">
+                Close Drive
+            </a>
+            {% endif %}
+
+        </td>
+
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% else %}
+<p>No drives created yet.</p>
+{% endif %}
+
+{% endblock %}
